@@ -1,0 +1,28 @@
+package main
+
+import "fmt"
+
+func CamelToSnakeCase(s string) string{
+	result := ""
+	prevUpper := false
+	for i, r := range s {
+		isLower, isUpper := r >= 'a' && r <= 'z', r >= 'A' && r <= 'Z'
+		if !isLower && !isUpper || isUpper && prevUpper || s[len(s)-1] >= 'A' && s[len(s)-1] <= 'Z' {
+			return s
+		}
+		if isUpper && i != 0 {
+			result += "_"
+		}
+		result += string(r)
+		prevUpper = isUpper
+	}
+	return result
+}
+func main() {
+	fmt.Println(CamelToSnakeCase("HelloWorld"))
+	fmt.Println(CamelToSnakeCase("helloWorld"))
+	fmt.Println(CamelToSnakeCase("camelCase"))
+	fmt.Println(CamelToSnakeCase("CAMELtoSnackCASE"))
+	fmt.Println(CamelToSnakeCase("camelToSnakeCase"))
+	fmt.Println(CamelToSnakeCase("hey2"))
+}
