@@ -13,10 +13,6 @@ func LastWord(s string) string {
 	result := ""
 	i := len(s) - 1
 
-	for i >= 0 && s[i] == ' ' {
-		i--
-	}
-
 	for i >= 0 && s[i] != ' ' {
 		result = string(s[i]) + result
 		i--
@@ -26,11 +22,11 @@ func LastWord(s string) string {
 }
 
 func main() {
-	fmt.Print(FirstWord("hello there"))
-	fmt.Print(FirstWord(""))
-	fmt.Print(FirstWord("hello   .........  bye"))
+	fmt.Print(LastWord("hello there"))
+	fmt.Print(LastWord(""))
+	fmt.Print(LastWord("hello   .........  bye"))
 }
 
-// hello
+// there
 //
-// hello
+// bye
